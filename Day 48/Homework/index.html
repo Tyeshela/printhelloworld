@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .game-container {
+            background: white;
+            margin: auto;
+            width: 50%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .results, .scoreboard {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Dice Roll Game</h1>
+        <button id="rollButton">Roll Dice</button>
+        <button id="resetButton">Reset Scores</button>
+        <div class="results">
+            <h2>User Roll: <span id="userResult">0</span></h2>
+            <h2>Computer Roll: <span id="computerResult">0</span></h2>
+        </div>
+        <div class="scoreboard">
+            <h2>Score - User: <span id="userScore">0</span> | Computer: <span id="computerScore">0</span></h2>
+        </div>
+        <h3 id="winner">Winner: </h3>
+    </div>
+
+    <script>
+        let userScore = 0;
+        let computerScore = 0;
+
+        document.getElementById('rollButton').addEventListener('click', function() {
+            const userResult = rollDice();
+            const computerResult = rollDice();
+            document.getElementById('userResult').textContent = userResult;
+            document.getElementById('computerResult').textContent = computerResult;
+        
+            if (userResult > computerResult) {
+                userScore++;
+                document.getElementById('winner').textContent = 'Winner: User';
+            } else if (userResult < computerResult) {
+                computerScore++;
+                document.getElementById('winner').textContent = 'Winner: Computer';
+            } else {
+                document.getElementById('winner').textContent = 'Winner: Draw';
+            }
+        
+            document.getElementById('userScore').textContent = userScore;
+            document.getElementById('computerScore').textContent = computerScore;
+        });
+
+        document.getElementById('resetButton').addEventListener('click', function() {
+            userScore = 0;
+            computerScore = 0;
+            document.getElementById('userResult').textContent = 0;
+            document.getElementById('computerResult').textContent = 0;
+            document.getElementById('userScore').textContent = userScore;
+            document.getElementById('computerScore').textContent = computerScore;
+            document.getElementById('winner').textContent = 'Winner: ';
+        });
+
+        function rollDice() {
+            return Math.floor(Math.random() * 6) + 1;
+        }
+    </script>
+</body>
+</html>

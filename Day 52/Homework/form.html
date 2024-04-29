@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm">
+        Name: <input type="text" name="name"><br>
+        Surname: <input type="text" name="surname"><br>
+        Age: <input type="text" name="age"><br>
+        <button type="button" onclick="submitForm()">Submit</button>
+      </form>
+      
+      <script>
+      function submitForm() {
+        var formData = {
+          name: document.forms["myForm"]["name"].value,
+          surname: document.forms["myForm"]["surname"].value,
+          age: document.forms["myForm"]["age"].value
+        };
+        console.log(formData);
+      }
+      </script>
+</body>
+</html>

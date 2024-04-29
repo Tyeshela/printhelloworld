@@ -1,0 +1,5 @@
+name = input("What is your name? ")
+age = input("How old are you? ")
+city = input("What city do you live in? ")
+hobby = input("What is your favorite hobby? ")
+print(f"{name}, who is {age} years old, lives in {city} and loves {hobby}.")

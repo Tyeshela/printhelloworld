@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="balanceDisplay"></p>
+    <input type="number" id="amount" step="0.01" min="0">
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+
+    <script>
+        var balance = 0;
+
+        function updateBalanceDisplay() {
+            document.getElementById('balanceDisplay').innerText = 'Current Balance: $' + balance.toFixed(2);
+        }
+
+        function deposit() {
+            var amount = parseFloat(document.getElementById('amount').value);
+            balance += amount;
+            updateBalanceDisplay();
+        }
+
+        function withdraw() {
+            var amount = parseFloat(document.getElementById('amount').value);
+            if (amount > balance) {
+                alert('The entered amount exceeds the balance!');
+            } else {
+                balance -= amount;
+                updateBalanceDisplay();
+            }
+        }
+    </script>
+</body>
+</html>
